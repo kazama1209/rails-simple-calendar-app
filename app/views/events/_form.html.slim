@@ -1,0 +1,26 @@
+= form_with model: event, url: url, local: false do |f|
+  table.table.table-borderless
+    tr
+      td = f.label t("activerecord.attributes.event.title"), class: "control-label"
+    tr
+      td = f.text_field :title, class: "form-control"
+    
+    tr
+      td = f.label t("activerecord.attributes.event.start_time"), class: "control-label"
+    tr
+      td
+        .datetime_select
+          = raw sprintf(f.datetime_select(:start_time, with_css_classes: true, default: default_date, use_month_numbers: true, start_year: (Time.current.year), end_year: (Time.current.year + 1), date_separator: '%s', datetime_separator: "%s", time_separator: "%s"), "年 ", "月 ", "日 ", "時 ") + "分"
+    
+    tr
+      td = f.label t("activerecord.attributes.event.end_time"), class: "control-label"
+    tr
+      td
+        .datetime_select
+          = raw sprintf(f.datetime_select(:end_time, with_css_classes: true, default: default_date, use_month_numbers: true, start_year: (Time.current.year), end_year: (Time.current.year + 1), date_separator: '%s', datetime_separator: "%s", time_separator: "%s"), "年 ", "月 ", "日 ", "時 ") + "分"
+  
+  .d-flex.justify-content-end
+    - if action_name == "edit"
+      = link_to "削除", event_path(event), method: :delete, data: { confirm: "本当に削除しますか？" }, class: "btn btn-danger me-1"
+    
+    = f.submit class: "btn btn-success"

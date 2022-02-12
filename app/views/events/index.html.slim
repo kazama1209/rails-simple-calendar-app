@@ -1,0 +1,29 @@
+// フラッシュメッセージ
+- flash.each do |type, message|
+  div class="alert alert-#{type} alert-dismissible rounded-0 fade show" role="alert" 
+    button.btn-close aria-label="Close" data-bs-dismiss="alert" type="button" 
+    h5.m-0
+      = message
+
+.container
+  .row.p-3
+  = month_calendar(events: @events) do |date, events|
+    .d-flex.align-items-center.mb-3
+      = date.day
+      .ms-auto
+        = link_to new_event_path(default_date: date), { class: "btn btn-sm btn-outline-primary fs10", "data-bs-target": "#eventModal", "data-bs-toggle": "modal", remote: true } do
+          i.fas.fa-plus
+        
+    - events&.each do |event|
+      .my-1
+        = link_to "#{event.title}（#{event.start_time.strftime("%R")} ~ #{event.end_time.strftime("%R")}）", edit_event_path(event), { class: "btn btn-sm btn-success", "data-bs-target": "#eventModal", "data-bs-toggle": "modal", remote: true }
+
+// モーダル画面
+#eventModal.modal.fade aria-hidden="true" aria-labelledby="eventModalLabel" tabindex="-1"
+  .modal-dialog style="max-width:32%;"
+    .modal-content
+      .modal-header
+        button.btn-close id="modalClose" aria-label="Close" data-bs-dismiss="modal" type="button"
+      
+      .modal-body
+        #form
