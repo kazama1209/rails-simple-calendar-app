@@ -1,24 +1,9 @@
-# README
+# rails-simple-calendar-app
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+https://user-images.githubusercontent.com/51913879/153703335-70193214-5a29-4d0b-bafd-97c642730dbb.mov
 
-Things you may want to cover:
+「[simple_calendar](https://github.com/excid3/simple_calendar)」 という gem で作ったシンプルなカレンダー機能。
 
-* Ruby version
+詳細は Qiita にて記載。
 
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+https://qiita.com/kazama1209/items/3379cf2db9981f617791
